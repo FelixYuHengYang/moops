@@ -106,7 +106,11 @@ Image with Height and Width Adjusted:
 
 1. Make an images folder in your personal repository, and import an image of your hometown or pet from that folder. Do it unformatted using the image URL and the relative file path method, then do it again but instead change the height and width of your image:
 
-<!--- Fill you answer here. --->
+![Aurora Borealis](https://raw.githubusercontent.com/FelixYuHengYang/moops/master/Images/89d5577624fdac9f1de60f4e33eac54db9ec2895ea1e34b7ea74b4201c9ae6b0.jpg)
+
+<img
+src="https://raw.githubusercontent.com/FelixYuHengYang/moops/master/Images/89d5577624fdac9f1de60f4e33eac54db9ec2895ea1e34b7ea74b4201c9ae6b0.jpg" height=200 width=400>
+
 
 
 
@@ -119,7 +123,9 @@ To insert a link, all you have to do is enclose your linked text in `[]` followe
 
 1. Below, write a sentence describing your major, and insert a link to your major's department website.
 
-<!--- Fill you answer here. --->
+Environmental engineering is a field deidcated to solving environmental issues from an engineering mindset.
+
+[Here](https://bee.cals.cornell.edu) is the link.
 
 ## Tables
 Tables in Markdown are slightly harder, but there's an automatic function that allows to you make one easily. When working in a `.md` file, all you have to do is type `table` and hit enter. It will initialize a 2 by 2 table, but you can easily increase the width by going to the last column and hitting `Tab` or it's height by clicking in any cell and hitting `Enter`. Notice in the example how the text below the header is justified left, center, and right. This is due to the line below the header. A line with a colon on the far left of the dashes only indicates left justified, colons on both sides of the dashes indicates centered, and a colon on the far right of the dashes indicates right justified.
@@ -150,8 +156,11 @@ When making tables, it's not important that the lines match up. For example, the
 1. Create a table listing your 3 favorite animals, foods, books, and places on campus. Try out the different cell justifications:
 
 <!--- Fill you answer here. --->
-
-
+| Animals     | Books     | Places on campus |
+| :------------- | :-------------: |-------: |
+| Penguino      | Sons and Lovers     |Uris Library|
+| Dolphin       | Brothers Karamazov      |The chairs on top of the slope|
+| Cat      | 100 Years of Solitude       |Willard Straight|
 
 ## Code and Syntax Highlighting
 Notice how throughout this document there have been computer and programming related words formatted to look more "computery". That's because I've used syntax highlighting.
@@ -168,11 +177,16 @@ For larger code blocks where you report multiple lines of code, you always start
 
 1. Below, write a Python print function with a different string using syntax highlighting:
 
-<!--- Fill you answer here. --->
+`
+print(Cream of Mushroom soup)
+`
 
 2. Now write a block of Python code for that same print statement:
 
 <!--- Fill you answer here. --->
+```python
+print(Cream of Mushroom soup)
+```
 
 
 
@@ -184,6 +198,7 @@ $$ Re_D = \frac{uD}{\nu} $$
 1. Try it on your own! Write your favorite equation using LaTeX source code and toggle the LaTeX preview to see it formatted:
 
 <!--- Fill you answer here. --->
+$$ K_m=\frac{V^2}{2g}$$
 
 
 # Using Python and Running it With Hydrogen in Markdown
@@ -220,6 +235,16 @@ These questions are meant to test what you've learned from the Python Basics tut
 1. Write a conditional statement with 3 conditions: when x is 10, when x is 1, and when x is anything other than 1 or 10. For each condition, have your code print what the value is or isn't.
 
 <!--- Fill you answer here. --->
+```python
+x=2
+if x==10:
+  print(x)
+  elif:
+  x==1
+  print(x)
+else:
+  print('X is not 10 or 1')
+```
 
 
 
@@ -227,18 +252,21 @@ These questions are meant to test what you've learned from the Python Basics tut
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
 <!--- Fill you answer here. --->
-
-
-
-
-
-
-
-
+```python
+x=0
+times=20
+for x in range (0,20):
+  x=x+1
+  print(x)
+```
 
 3. Using the NumPy package, calculate the value of sin(4), and use the sigfig function from the utility module in aide_design to get your answer to 3 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
 
 <!--- Fill you answer here. --->
+```python
+import numpy as n
+print(ut.sig(n.sin(4),3))
+```
 
 
 
@@ -246,7 +274,16 @@ These questions are meant to test what you've learned from the Python Basics tut
 
 <!--- Fill you answer here. --->
 
-
+```python
+list=[1,2,3,4,5]
+len(list)
+array=np.array(list)*u.m
+TwoDarray=np.array([[list],[list],[list],[list],[list]])
+array
+TwoDarray
+np.size(TwoDarray)
+TwoDarrayUnits=TwoDarray*u.L
+```
 
 
 
@@ -268,13 +305,35 @@ from scipy.constants import Boltzmann as kB_sc # I've imported the unitless valu
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
 
 # Write your code here
-
+def Stokes_Einstein_Eq(T,KinVisc,r):
+  Temp=T.to(u.K)
+  KinVisc=KinVisc.to(u.m**2/u.s)
+  Rad=r.to(u.m)
+  D=(kB*T/(6*u.pi*KinVisc*r.to(u.m))).to_base_units()
+  return D
+Temp=360*u.K
+Kin_Visc=5*u.m**2/u.s
+r=5*u.m
+Stokes_Einstein_Eq(Temp,Kin_Visc,r)
 ```
+
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save your plot to your images folder in your personal repository, and display it below using `plt.show()` and an image insertion using a relative file path to the image.
 
 <!--- Fill you answer here. --->
-
+```python
+Pipe_rad=.2*u.m
+Pipe_diam=2*Pipe_rad
+Q=2*u.m**3/u.s
+tempC=np.arange(201)*u.degC
+GraphArray=tempC.to(u.degK)
+nu=pc.viscosity_kinematic(GraphArray)
+plt.plot(GraphArray, pc.re_pipe(Q,Pipe_diam,nu))
+plt.xlabel = ('Temperature in Celsius')
+plt.ylabel = ('Reynolds Number')
+plt.plot()
+plt.show()
+```
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
