@@ -107,7 +107,7 @@ Image with Height and Width Adjusted:
 1. Make an images folder in your personal repository, and import an image of your hometown or pet from that folder. Do it unformatted using the image URL and the relative file path method, then do it again but instead change the height and width of your image:
 
 ![Aurora Borealis](https://raw.githubusercontent.com/FelixYuHengYang/moops/master/Images/89d5577624fdac9f1de60f4e33eac54db9ec2895ea1e34b7ea74b4201c9ae6b0.jpg)
-
+![Same Picture](/Images/borealis.jpg)
 <img
 src="https://raw.githubusercontent.com/FelixYuHengYang/moops/master/Images/89d5577624fdac9f1de60f4e33eac54db9ec2895ea1e34b7ea74b4201c9ae6b0.jpg" height=200 width=400>
 
@@ -318,7 +318,7 @@ Stokes_Einstein_Eq(Temp,Kin_Visc,r)
 ```
 
 
-6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save your plot to your images folder in your personal repository, and display it below using `plt.show()` and an image insertion using a relative file path to the image. 
+6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title, labeled axes, and axes grid. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*. Make sure to save your plot to your images folder in your personal repository, and display it below using `plt.show()` and an image insertion using a relative file path to the image.
 
 <!--- Fill you answer here. --->
 ```python
@@ -326,19 +326,21 @@ Pipe_rad=.2*u.m
 Pipe_diam=2*Pipe_rad
 Q=2*u.m**3/u.s
 tempC=np.arange(201)*u.degC
-GraphArray=tempC.to(u.degK)
+GraphArray=tempC.to(u.degC)
 nu=pc.viscosity_kinematic(GraphArray)
 plt.plot(GraphArray, pc.re_pipe(Q,Pipe_diam,nu))
 plt.xlabel = ('Temperature in Celsius')
 plt.ylabel = ('Reynolds Number')
 plt.plot()
 plt.show()
+plt.savefig('./moops/Reynods_Plot.png')
 ```
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
 1. Create a portal for your team members to join. Have them write you words of  encouragement in the space below, and be sure they sign their name next to their encouragements.
-
+Felix is a great subteam lead! - Aly
+Thanks for helping me understand python Felix! - Julia
 
 
 
