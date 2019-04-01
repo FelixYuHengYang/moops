@@ -18,5 +18,6 @@ Area_1104=6195*(u.ft**2)
 Area_1103=3323*(u.ft**2)
 Area_1102=1719*(u.ft**2)
 Area_in_existing_wetland=(84+316+229)*(u.ft**2)
+Area_in_existing_wetland
 Wetland_Area=Area_1105-Area_in_existing_wetland
 Wetland_Area.to(u.acres)
