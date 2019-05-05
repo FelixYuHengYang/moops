@@ -14,7 +14,7 @@ from math import*
 
 Temp=20*u.degC
 V=10*u.mL
-C_init_glyphosate=.240*u.g/u.L
+C_init_glyphosate=.240*u.g/u.L  
 C_init_S_metolachlore=.193*u.g/u.L
 Amt_mulch_residence=758*u.g/u.m**2
 ID_Column=15.4*u.cm
